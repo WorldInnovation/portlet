@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.owlafrica.servicebuilder.model.Department">
+		<field name="id" type="long" />
+		<field name="name" type="String" />
+	</model>
+	<model name="com.owlafrica.servicebuilder.model.Employee">
+		<field name="id" type="long" />
+		<field name="birthday" type="Date" />
+		<field name="eMail" type="String" />
+		<field name="firstName" type="String" />
+		<field name="secondName" type="String" />
+		<field name="grade" type="int" />
+		<field name="depID" type="long" />
+	</model>
+</model-hints>

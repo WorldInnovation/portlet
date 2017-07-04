@@ -1,0 +1,11 @@
+*.class
+*.war
+*.iml
+**/target/*
+**/bin/*
+**/classes/*
+.idea/*
+/target/
+/.idea/
+/src/main/webapp/app/node_modules/
+/src/main/webapp/js/main.js

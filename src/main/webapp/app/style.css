@@ -1,0 +1,143 @@
+body{
+    font: 52.5%/1.6 Verdana, Tahoma, sans-serif;
+    color: #444444;
+}
+
+h1, h2 {
+    color: #ff6600;
+    text-align: center;
+}
+header, main, footer {
+    margin: 30px auto;
+    width: 600px;
+    text-align: center;
+}
+
+.my-text {
+    color: blue;
+    font-size:15px
+}
+
+table {
+  /*  border: 1px solid #ff6600;*/
+    margin: auto;
+}
+td {
+    padding: 5px;
+    border: 1px solid #E4E4E4;
+    text-align: center;
+    /*cursor: pointer;*/
+}
+
+caption{
+    caption-side: top;
+}
+
+form{
+    border: 5px;
+    background:none;
+    border:none;
+    color: #ff6600;
+    font-size:17px
+}
+
+legend {
+    text-align: center;
+}
+.form-row {
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+.form-row input {
+    float: right;
+    height: 19px;
+    line-height: 19px;
+    margin: 0px;
+    padding: 0px 5px;
+    width: 287px;
+    border: 1px solid #ABADB3;
+}
+
+.form-row textarea {
+    height: 90px;
+    line-height: 16px;
+    font-size: 12px;
+    padding: 0px 5px;
+    width: 404px;
+    border: 1px solid #ABADB3;
+}
+
+.form-row input[type=submit] {
+    padding:5px;
+    height:25px;
+    width:100%;
+    line-height: 10px;
+    background: #337AB7;
+    color:white;
+}
+
+.form-row input[type=submit]:hover {
+    background:#ff6600;
+}
+.reg-form {
+    width: 416px;
+    margin: 0 auto;
+}
+
+.submit:hover{
+    background: #ff6600;
+}
+
+.button:hover{
+    background: #ff6600;
+}
+
+
+.listener:hover {
+    background: #ff6600;
+}
+
+a.btn{
+    color: #fff; /* цвет текста */
+    text-decoration: none; /* убирать подчёркивание у ссылок */
+    user-select: none; /* убирать выделение текста */
+    background: rgb(128,128,128); /* фон кнопки */
+    padding: .7em 1.5em; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+}
+
+.btn:hover{background: rgb(80,160,80)}
+.btn:active{background: rgb(200,256,200)}
+.message{
+    color:#cc7700;/*#747474;*/
+    background-color:#E4E4E4;
+    border:1px solid #323232;
+    font-size:20px;
+    margin-left:3px;
+    margin-right:3px;
+    margin-bottom:3px;
+}
+.success{
+    background-color:#19A15F;
+    color:#ffffff;
+}
+
+.error{
+    background-color:#d9d9d9;
+    color:#d65144;
+    margin-left:10px;
+}
+
+.info{
+    background-color:#4b8bf5;
+    color:#ffffff;
+}
+
+.alert {
+    padding: 15px;
+    border: 1px solid #d6e9c6;
+    border-radius: 4px;
+    color: #3c763d;
+    background-color: #dff0d8;
+}
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>        <!DOCTYPE service-builder PUBLIC
+        "-//Liferay//DTD Service Builder 6.2.0//EN"
+        "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.owlafrica.servicebuilder">
+    <namespace>depWorkFlow</namespace>
+    <entity name="Department" table="Department" local-service="true" remote-service="true">
+        <column name="id" db-name="Department_id" type="long" primary="true" id-type="increment"/>
+        <column name="name" db-name="Department_name" type="String" />
+    </entity>
+    <entity name="Employee" table="Employee" local-service="true" remote-service="true">
+        <column name="id" db-name="Employee_id" type="long" primary="true" id-type="increment"/>
+        <column name="birthday" type="Date" />
+        <column name="eMail" type="String"/>
+        <column name="firstName" type="String"/>
+        <column name="secondName" type="String"/>
+        <column name="grade" type="int"/>
+        <column name="depID" type="long"/>
+    </entity>
+</service-builder>

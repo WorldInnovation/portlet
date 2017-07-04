@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="com.owlafrica.servicebuilder.model.impl.DepartmentModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="DEPARTMENT_ID" />
+			</id>
+			<basic name="name">
+				<column name="DEPARTMENT_NAME" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.owlafrica.servicebuilder.model.impl.EmployeeModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="EMPLOYEE_ID" />
+			</id>
+			<basic name="birthday">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="eMail" />
+			<basic name="firstName" />
+			<basic name="secondName" />
+			<basic name="grade" />
+			<basic name="depID" />
+			<transient name="EMail" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="com.owlafrica.servicebuilder.model.impl.DepartmentImpl" name="Department">
+		<table name="Department" />
+		<attributes />
+	</entity>
+	<entity class="com.owlafrica.servicebuilder.model.impl.EmployeeImpl" name="Employee">
+		<table name="Employee" />
+		<attributes />
+	</entity>
+</entity-mappings>

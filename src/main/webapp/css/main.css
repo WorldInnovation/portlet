@@ -1,0 +1,10 @@
+.button-row {
+    color: #fff;
+    text-decoration: none;
+    user-select: none;
+    background: rgb(2,2,128);
+    padding: auto;
+    outline: none;
+}
+
+.button-row:hover{background: rgb(80,160,80)}

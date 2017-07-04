@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="com.owlafrica.servicebuilder.model.Department" />
+	<import class="com.owlafrica.servicebuilder.model.Employee" />
+	<class name="com.owlafrica.servicebuilder.model.impl.DepartmentImpl" table="Department">
+		<cache usage="read-write" />
+		<id name="id" column="Department_id" type="long">
+			<generator class="increment" />
+		</id>
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" column="Department_name" />
+	</class>
+	<class name="com.owlafrica.servicebuilder.model.impl.EmployeeImpl" table="Employee">
+		<cache usage="read-write" />
+		<id name="id" column="Employee_id" type="long">
+			<generator class="increment" />
+		</id>
+		<property name="birthday" type="org.hibernate.type.TimestampType" />
+		<property name="eMail" access="com.liferay.portal.dao.orm.hibernate.CamelCasePropertyAccessor" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="firstName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="secondName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="grade" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="depID" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+</hibernate-mapping>
