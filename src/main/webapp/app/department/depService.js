@@ -1,10 +1,8 @@
-let $this;
+
 export default class DepService {
 
     constructor() {
-        $this = this;
-        this.nsID = window.MYDepartment.ns + "id";
-        this.nsName = window.MYDepartment.ns + "name";
+
     }
 
     getAll() {
@@ -74,7 +72,7 @@ export default class DepService {
 
     editDep(id) {
         let dataObject = {};
-        dataObject = this.createDataObject(dataObject, window.MYDepartment.ns, 'id', id);
+        dataObject = this.createDataObject(dataObject, window.MYDepartment.ns, 'name', 'lala');
         let editDep = $.ajax({
             url: window.MYDepartment.editDepartment,
             data: dataObject,//

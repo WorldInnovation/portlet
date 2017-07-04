@@ -56,8 +56,8 @@ export default class DepView {
         const ns =window.MYDepartment.ns;
         const firstParent = $('<form id="departmentForm" class="reg-form" method="post" action="" ></form>');
         const row = $('<div class="form-row"> <label for="name">DepName: </label>')
-            .append($('<input type="text" id=ns+"name" placeholder="Enter department" name =ns+"name"/>').val(response.name !== null ? response.name : ""))
-            .append($('<input type="hidden" id=ns+"id" value="1" name =ns+"id"/>'))
+            .append($('<input type="text" id="name" placeholder="Enter department" name ="name"/>').val(response.name !== null ? response.name : ""))
+            .append($('<input type="hidden" id="id" value="' + response.id + '"/>'))
             .append($('</div>'))
             .append($('<div class="form-row"> <input id="depSave" class="submit" type="submit" />'))
             .append($('</div>'));
@@ -79,10 +79,10 @@ export default class DepView {
                         type: "POST",
                         data: {
                             id: () => {
-                                return window.MYDepartment.ns+$('#id').val();
+                                return $('#id').val();
                             },
                             name: () => {
-                                return window.MYDepartment.ns+$('#name').val();
+                                return $('#name').val();
                             }
                         }
                     }
