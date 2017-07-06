@@ -72,7 +72,8 @@ export default class DepService {
 
     editDep(id) {
         let dataObject = {};
-        dataObject = this.createDataObject(dataObject, window.MYDepartment.ns, 'name', 'lala');
+        dataObject[window.MYDepartment.ns + 'id'] = id;
+        //dataObject[window.MYDepartment.ns + 'name'] = 'lala';
         let editDep = $.ajax({
             url: window.MYDepartment.editDepartment,
             data: dataObject,//
@@ -83,15 +84,17 @@ export default class DepService {
 
     saveDepartment() {
         let id = $('#id').val();
-        if (typeof undefined == id) {
+        /*if (typeof undefined == id) {
             id = null;
-        }
-        id = window.MYDepartment.ns.concat(id);
+        }*/
+
         let name = $('#name').val();
-        id = window.MYDepartment.ns.concat(name)
+        let dataObject = {};
+        dataObject[window.MYDepartment.ns + 'id'] = id;
+        dataObject[window.MYDepartment.ns + 'name'] = name;
 
         let saveDepartment = $.ajax({
-            data: {id: id, name: name},
+            data: dataObject,
             url: window.MYDepartment.depSave,
             type: "POST",
             success: function (data, textStatus, jqXHR) {
@@ -108,6 +111,20 @@ export default class DepService {
         object[nameSpace + paramName] = param;
         return object;
     }
+/*    createDatamap(object, ns, paramMap){
+        let data = {};
+        data.id = 1;
+        data.name = 'lala';
+
+        data.forEach( (value, key, recipeMap) => {
+            alert(`${ns}+${key}: ${value}`);
+           // object[ns + paramName] = param;
+        });
+
+        return object;
+    }*/
+
+
 
 }
 

@@ -50,14 +50,13 @@ export default class DepView {
     };
 
     displayDepForm(response) {
-
+        response.id = 7;
         let body = $('#content');
         body.empty();
-        const ns =window.MYDepartment.ns;
         const firstParent = $('<form id="departmentForm" class="reg-form" method="post" action="" ></form>');
         const row = $('<div class="form-row"> <label for="name">DepName: </label>')
-            .append($('<input type="text" id="name" placeholder="Enter department" name ="name"/>').val(response.name !== null ? response.name : ""))
-            .append($('<input type="hidden" id="id" value="' + response.id + '"/>'))
+            .append($('<input type="text" id="name" placeholder="Enter department" name ="name"/>').val('lala'))
+            .append($('<input type="hidden" id="id" value="7" />'))
             .append($('</div>'))
             .append($('<div class="form-row"> <input id="depSave" class="submit" type="submit" />'))
             .append($('</div>'));
@@ -68,23 +67,30 @@ export default class DepView {
     };
 
     validateDepartment() {
+        var dataObject = {};
+        alert($('#id').val());
+        dataObject[window.MYDepartment.ns + 'id'] = $('#id').val();
+        dataObject[window.MYDepartment.ns + 'name'] = $('#name').val();
+
         $('#departmentForm').validate({
+
             rules: {
-                name: {
+                namePass: {
                     required: true,
                     minlength: 1,
                     maxlength: 10,
                     remote: {
                         url: window.MYDepartment.getDepName,
                         type: "POST",
-                        data: {
+                        data: dataObject
+                        /*{
                             id: () => {
                                 return $('#id').val();
                             },
                             name: () => {
                                 return $('#name').val();
                             }
-                        }
+                        }*/
                     }
                 }
             },

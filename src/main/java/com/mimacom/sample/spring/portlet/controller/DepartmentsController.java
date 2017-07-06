@@ -67,8 +67,8 @@ public class DepartmentsController extends ViewController {
 
        // Department department = departmentService.getDepByName(name);
     //    Boolean result = (department == null || department.getId().equals(id));
-        Boolean result = true;
-        resp.getWriter().write(result.toString());
+        Boolean result = false;
+            resp.getWriter().write(result.toString());
     }
 /*    @Autowired
     private DepartmentService departmentService;
