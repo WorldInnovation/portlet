@@ -8,16 +8,13 @@ export default class DepService {
     getAll() {
         return $.ajax({
             url: window.MYDepartment.depAll,
-            type: 'POST',
+            type: 'GET',
             success: function (data, textStatus, jqXHR) {
-                alert("ok :" + data );
             },
             error: function (data) {
-                alert("error :" + data );
             }
         });
     };
-
 
     deleteDep(id) {
         let dataObject = {};

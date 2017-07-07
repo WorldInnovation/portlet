@@ -9,13 +9,7 @@
     <div id="${ns}start" class="container">
         <div id = "${ns}mainRow" class="row">
             <div id="${ns}content" class="mainView"></div>
-            <h1>new Department </h1>
-                <form href="${ns}depSave" name="depForm"  method="POST">
-                    Dep Name<br/>
-                    <input  type="text" name="${ns}name" id="${ns}id"/><br/>
-                    <input type="submit" name="addDep" id="addDep" value="Add Dep"/>
-                </form>
-            </div>
+
         </div>
 
     </div>
