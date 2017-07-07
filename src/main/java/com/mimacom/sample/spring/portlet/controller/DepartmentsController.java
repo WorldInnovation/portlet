@@ -1,7 +1,10 @@
 package com.mimacom.sample.spring.portlet.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.liferay.portal.kernel.exception.SystemException;
+
+import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.util.PortalUtil;
 import com.mimacom.sample.spring.portlet.util.FormatUtils;
 import com.owlafrica.servicebuilder.model.Department;
@@ -22,15 +25,16 @@ import java.util.List;
 public class DepartmentsController extends ViewController {
 
     @ResourceMapping(value = "depAll")
-    public List<Department> depAll(ResourceRequest req, ResourceResponse resp) throws SystemException {
+    public void depAll(ResourceRequest req, ResourceResponse resp) throws SystemException, IOException {
         HttpServletRequest httpReq = PortalUtil.getHttpServletRequest(req);
 
         PortalUtil.getOriginalServletRequest(httpReq).getParameter("name");
 
         String strDepID = req.getParameter("id");
         String name = req.getParameter("name");
-        //DepartmentLocalServiceUtil.
-        return DepartmentLocalServiceUtil.getDepartments(0, 10);//
+
+        List<Department> departments = DepartmentLocalServiceUtil.getDepartments(0, 10);
+        writeJSON(resp, JSON.toJSONString(departments));
     }
 
     @ResourceMapping(value = "editDepartment")
@@ -39,7 +43,7 @@ public class DepartmentsController extends ViewController {
         String strDepID = req.getParameter("id");
         String name = req.getParameter("name");
         Long depID = FormatUtils.getLongFromStr(strDepID);
-        req.setAttribute("depID", depID);
+        req.setAttribute("depID", depID );
         req.setAttribute("name", name);
 
     }

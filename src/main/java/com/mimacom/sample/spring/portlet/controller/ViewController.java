@@ -3,21 +3,17 @@ package com.mimacom.sample.spring.portlet.controller;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.mimacom.sample.spring.portlet.controller.Keys.Views;
-import com.mimacom.sample.spring.portlet.util.FormatUtils;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import javax.portlet.GenericPortlet;
 import javax.portlet.PortletException;
-import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 
-public class ViewController extends GenericPortlet{
+public class ViewController extends GenericPortlet {
     private static final Log LOGGER = LogFactoryUtil.getLog(ViewController.class);
 
     @RenderMapping
@@ -43,6 +39,12 @@ public class ViewController extends GenericPortlet{
         } catch (IOException e) {
             throw new PortletException(e);
         }
+    }
+
+    protected void writeJSON(ResourceResponse response, String json) throws IOException {
+        response.setContentType("application/json");
+        PrintWriter writer = response.getWriter();
+        writer.write(json);
     }
 
 

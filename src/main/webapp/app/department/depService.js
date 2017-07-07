@@ -6,17 +6,16 @@ export default class DepService {
     }
 
     getAll() {
-
         return $.ajax({
             url: window.MYDepartment.depAll,
-            //data: dataObject,
             type: 'POST',
-
-            success: function (data) {
+            success: function (data, textStatus, jqXHR) {
+                alert("ok :" + data );
+            },
+            error: function (data) {
+                alert("error :" + data );
             }
         });
-
-
     };
 
 

@@ -37,7 +37,6 @@ export default class DepView {
     };
 
     displayDepForm(response) {
-        response.id = 7;
         let body = $('#content');
         body.empty();
         const firstParent = $('<form id="departmentForm" class="reg-form" method="post" action="" ></form>');

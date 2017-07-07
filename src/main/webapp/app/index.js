@@ -27,7 +27,6 @@ export default class MainController {
         alert(window.MYDepartment.depAll);
         $("#content").on('click', '.listener', () => {
             let clickEvent = event.target.value;
-            console.log(clickEvent);
 
             if(this.map.has(clickEvent)){
                 this.map.get(clickEvent)(event);

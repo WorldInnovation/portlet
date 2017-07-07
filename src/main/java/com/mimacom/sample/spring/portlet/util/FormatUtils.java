@@ -1,9 +1,12 @@
 package com.mimacom.sample.spring.portlet.util;
 
+import com.owlafrica.servicebuilder.model.Department;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 public class FormatUtils {
     private static String datePattern = "yyyy.MM.dd";
@@ -66,6 +69,30 @@ public class FormatUtils {
             return null;
         }
 
+
+    }
+
+    public class JsonObject {
+
+        private Department department;
+
+        private Map<String,String> errorMap;
+
+        public Department getDepartment() {
+            return department;
+        }
+
+        public void setDepartment(Department department) {
+            this.department = department;
+        }
+
+        public Map<String, String> getErrors() {
+            return errorMap;
+        }
+
+        public void setErrors(Map<String, String> errors) {
+            this.errorMap = errors;
+        }
 
     }
 }
