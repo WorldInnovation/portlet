@@ -3,6 +3,6 @@
 
 <display>
 	<category name="category.sample">
-		<portlet id="spring-portlet" />
+		<portlet id="spring-portlet-master" />
 	</category>
 </display>

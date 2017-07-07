@@ -8,8 +8,8 @@
     <groupId>com.mimacom.sample.spring</groupId>
     <artifactId>spring-portlet</artifactId>
     <packaging>war</packaging>
-    <name>spring-portlet Portlet</name>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
+
     <build>
         <plugins>
             <plugin>
@@ -38,7 +38,7 @@
                     <appServerLibGlobalDir>${liferay.app.server.lib.global.dir}</appServerLibGlobalDir>
                     <appServerPortalDir>${liferay.app.server.portal.dir}</appServerPortalDir>
                     <liferayVersion>${liferay.version}</liferayVersion>
-                    <pluginName>sales-portlet</pluginName>
+                    <pluginName>spring-portlet</pluginName>
                     <pluginType>portlet</pluginType>
                 </configuration>
             </plugin>

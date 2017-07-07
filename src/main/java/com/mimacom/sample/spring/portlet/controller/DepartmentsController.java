@@ -5,6 +5,7 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.util.PortalUtil;
 import com.mimacom.sample.spring.portlet.util.FormatUtils;
 import com.owlafrica.servicebuilder.model.Department;
+import com.owlafrica.servicebuilder.model.impl.DepartmentImpl;
 import com.owlafrica.servicebuilder.service.DepartmentLocalServiceUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,15 +22,15 @@ import java.util.List;
 public class DepartmentsController extends ViewController {
 
     @ResourceMapping(value = "depAll")
-    public void depAll(ResourceRequest req, ResourceResponse resp) throws SystemException {
+    public List<Department> depAll(ResourceRequest req, ResourceResponse resp) throws SystemException {
         HttpServletRequest httpReq = PortalUtil.getHttpServletRequest(req);
 
         PortalUtil.getOriginalServletRequest(httpReq).getParameter("name");
-        List<Department> departments = null;//departmentService.getAll();
+
         String strDepID = req.getParameter("id");
         String name = req.getParameter("name");
-        //departments = DepartmentLocalServiceUtil.getDepartments(0,999999);
-        req.setAttribute("departmens", departments);
+        //DepartmentLocalServiceUtil.
+        return DepartmentLocalServiceUtil.getDepartments(0, 10);//
     }
 
     @ResourceMapping(value = "editDepartment")
@@ -51,12 +52,21 @@ public class DepartmentsController extends ViewController {
     }
 
     @ResourceMapping(value = "depSave")
-    public void depSave (ResourceRequest req, ResourceResponse resp) {
+    public void depSave(ResourceRequest req, ResourceResponse resp) throws SystemException {
         String strDepID = req.getParameter("id");
         String name = req.getParameter("name");
-        Long depID = FormatUtils.getLongFromStr(strDepID);
-       // departmentService.saveOrUpdateDepartment(department);
-        req.setAttribute("depID", depID);
+       // Department department = null;
+        //department.setName(name);
+        DepartmentImpl department = new DepartmentImpl();
+        if ((strDepID != null)&&(!strDepID.equals("") )) {
+            Long depID = FormatUtils.getLongFromStr(strDepID);
+           // department.setId(depID);
+        } else {
+
+            department.setName(name);
+        }
+        DepartmentLocalServiceUtil.addDepartment(department);
+        // req.setAttribute("depID", depID);
     }
 
     @ResourceMapping(value = "getDepName")
@@ -65,51 +75,11 @@ public class DepartmentsController extends ViewController {
         String value = req.getParameter("id");
         Long id = FormatUtils.getLongFromStr(value);
 
-       // Department department = departmentService.getDepByName(name);
-    //    Boolean result = (department == null || department.getId().equals(id));
+        // Department department = departmentService.getDepByName(name);
+        //    Boolean result = (department == null || department.getId().equals(id));
         Boolean result = false;
-            resp.getWriter().write(result.toString());
+        resp.getWriter().write(result.toString());
     }
-/*    @Autowired
-    private DepartmentService departmentService;
-
-    @RequestMapping(value = "/deps", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Department> getUsers() throws DaoExp {
-        List<Department> departments = departmentService.getAll();
-        return departments;
-    }
-
-    @RequestMapping(value = "/editDepartment", method = RequestMethod.GET)
-    @ResponseBody
-    public Department editDepartment(Long depID) throws DaoExp {
-        Department department = null;
-        if (depID != null) department = departmentService.getDepartmentById(depID);
-        return department;
-    }
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String printWelcome() {
-        return "start";
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/depSave", method = RequestMethod.POST)
-    public JsonObject depSave(Department department) throws DaoExp, ValidateExp {
-        JsonObject jsonObject = new JsonObject();
-        departmentService.saveOrUpdateDepartment(department);
-        jsonObject.setDepartment(department);
-        return jsonObject;
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/deleteDep", method = RequestMethod.POST)
-    public String depDelete(Long depID) throws DaoExp {
-        departmentService.getDepartmentById(depID);
-        departmentService.deleteDepartment(depID);
-        return depID.toString();
-    }
-*/
 
 
 }

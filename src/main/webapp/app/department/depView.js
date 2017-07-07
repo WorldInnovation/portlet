@@ -6,19 +6,6 @@ window.$ = window.jQuery = jQuery;
 export default class DepView {
 
     constructor() {
-
-/*        $.ajax({
-            url: '<portlet:resourceURL id="editDepartment"/>',
-            data: {id: 1,
-                name: 'test'
-            },//person id to sent
-            type: 'GET',
-            dataType: "json",
-            success: function (data) {
-                alert(data);
-                // get person data back from controller
-            }
-        });*/
     };
 
 
@@ -55,8 +42,8 @@ export default class DepView {
         body.empty();
         const firstParent = $('<form id="departmentForm" class="reg-form" method="post" action="" ></form>');
         const row = $('<div class="form-row"> <label for="name">DepName: </label>')
-            .append($('<input type="text" id="name" placeholder="Enter department" name ="name"/>').val('lala'))
-            .append($('<input type="hidden" id="id" value="7" />'))
+            .append($('<input type="text" id="name" placeholder="Enter department" name ="name"/>').val(response.name !== null ? response.name : ""))
+            .append($('<input type="hidden" id="id" value="' + response.id + '" />'))
             .append($('</div>'))
             .append($('<div class="form-row"> <input id="depSave" class="submit" type="submit" />'))
             .append($('</div>'));
@@ -68,8 +55,11 @@ export default class DepView {
 
     validateDepartment() {
         var dataObject = {};
-        alert($('#id').val());
-        dataObject[window.MYDepartment.ns + 'id'] = $('#id').val();
+        let id = $('#id').val();
+        if ((typeof undefined == id)||(id.length == 0)) {//
+            id = null;
+        }
+        dataObject[window.MYDepartment.ns + 'id'] = id;
         dataObject[window.MYDepartment.ns + 'name'] = $('#name').val();
 
         $('#departmentForm').validate({

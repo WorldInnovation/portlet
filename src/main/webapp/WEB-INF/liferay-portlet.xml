@@ -3,7 +3,7 @@
 
 <liferay-portlet-app>
 	<portlet>
-		<portlet-name>spring-portlet</portlet-name>
+		<portlet-name>spring-portlet-master</portlet-name>
 		<icon>/icon.png</icon>
 		<header-portlet-css>/css/main.css</header-portlet-css>
 		<header-portlet-javascript>/js/jquery-3.2.1.min.js</header-portlet-javascript>

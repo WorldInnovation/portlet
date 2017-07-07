@@ -13,50 +13,11 @@ export default class DepService {
             type: 'POST',
 
             success: function (data) {
-                alert(data);
-                // get person data back from controller
             }
         });
 
-        /* $.ajax({
-         type: "GET",
-         url: window.MYDepartment.depAll,
-         data: {id: 1,
-         name: 'test'
-         },
-         success:  function(data, textStatus, jqXHR){
 
-         alert( "data: "+ data );
-
-         },
-         error: function (data, textStatus, jqXHR) {
-         console.log(JSON.stringify(data));
-         alert( "error: "+ data );
-         alert( "error textStatus: "+ textStatus );
-         alert( "error jqXHR: "+ jqXHR );
-
-         const body = $('#content');
-         body.empty();
-
-         body.append("<h3> Error here </h3>");
-         }
-         });*/
     };
-
-    /*    getAll(){
-     $.ajax({
-     url: '<portlet:resourceURL id="editDepartment"/>',
-     data: {id: 1,
-     name: 'test'
-     },//person id to sent
-     type: 'GET',
-     dataType: "json",
-     success: function (data) {
-     alert(data);
-     // get person data back from controller
-     }
-     });
-     };*/
 
 
     deleteDep(id) {
@@ -84,9 +45,9 @@ export default class DepService {
 
     saveDepartment() {
         let id = $('#id').val();
-        /*if (typeof undefined == id) {
+        if ((typeof undefined == id)||("" == id)) {//
             id = null;
-        }*/
+        }
 
         let name = $('#name').val();
         let dataObject = {};
@@ -98,9 +59,6 @@ export default class DepService {
             url: window.MYDepartment.depSave,
             type: "POST",
             success: function (data, textStatus, jqXHR) {
-                if (data.department == null) {
-                    alert("Name: " + data.errors.name);
-                }
             }
         });
         return saveDepartment;

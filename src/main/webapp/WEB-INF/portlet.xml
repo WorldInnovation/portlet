@@ -6,8 +6,8 @@
              version="2.0">
 
 	<portlet>
-		<portlet-name>spring-portlet</portlet-name>
-		<display-name>spring-portlet</display-name>
+		<portlet-name>spring-portlet-master</portlet-name>
+		<display-name>spring-portlet-master</display-name>
         <portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
         <init-param>
             <name>contextConfigLocation</name>
@@ -18,9 +18,9 @@
 			<mime-type>text/html</mime-type>
 		</supports>
 		<portlet-info>
-			<title>spring-portlet</title>
-			<short-title>spring-portlet</short-title>
-			<keywords>spring-portlet</keywords>
+			<title>spring-portlet-master</title>
+			<short-title>spring-portlet-master</short-title>
+			<keywords>spring-portlet-master</keywords>
 		</portlet-info>
 		<security-role-ref>
 			<role-name>administrator</role-name>

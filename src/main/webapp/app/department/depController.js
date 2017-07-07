@@ -47,7 +47,6 @@ export default class DepController{
                     });
             }).catch((res)=>{
             if(res.responseJSON.name){
-                alert("name :" + res.responseJSON.name);
             }else{
                 this.depService.getAll()
                     .then( (response) => {
