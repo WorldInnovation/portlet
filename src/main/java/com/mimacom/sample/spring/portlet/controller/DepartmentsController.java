@@ -2,6 +2,7 @@ package com.mimacom.sample.spring.portlet.controller;
 
 
 import com.alibaba.fastjson.JSON;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 
 import com.liferay.portal.kernel.json.JSONArray;
@@ -49,10 +50,12 @@ public class DepartmentsController extends ViewController {
     }
 
     @ResourceMapping(value = "deleteDep")
-    public void delDep(ResourceRequest req, ResourceResponse resp) {
+    public void delDep(ResourceRequest req, ResourceResponse resp) throws SystemException, PortalException, IOException {
         String strDepID = req.getParameter("id");
         Long depID = FormatUtils.getLongFromStr(strDepID);
-
+        //DepartmentLocalServiceUtil.getDepartment(depID)
+        Department department = DepartmentLocalServiceUtil.deleteDepartment(depID);
+        writeJSON(resp, JSON.toJSONString(department));
     }
 
     @ResourceMapping(value = "depSave")
