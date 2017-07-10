@@ -81,8 +81,6 @@ public class DepartmentsController extends ViewController {
 /*        String name = req.getParameter("name");
         String value = req.getParameter("id");
         Long id = FormatUtils.getLongFromStr(value);
-
-
         */
         Boolean result = false;
         resp.getWriter().write(result.toString());

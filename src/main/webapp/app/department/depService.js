@@ -46,6 +46,8 @@ export default class DepService {
         }
 
         let name = $('#name').val();
+
+        // Govno peredeluvay
         let dataObject = {};
         dataObject[window.MYDepartment.ns + 'id'] = id;
         dataObject[window.MYDepartment.ns + 'name'] = name;

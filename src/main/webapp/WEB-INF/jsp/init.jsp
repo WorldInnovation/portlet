@@ -46,15 +46,11 @@
         depSave:  '<portlet:resourceURL id="depSave"/>',
         deleteDep:  '<portlet:resourceURL id="deleteDep"/>',
         getDepName:  '<portlet:resourceURL id="getDepName"/>',
+        employeesList:  '<portlet:resourceURL id="employeesList"/>',
         ns: '<portlet:namespace/>',
         depId: '<portlet:namespace/>'+ 'id'
     };
 </script>
-<nav>
-    <ul>
-        <li><a href="<portlet:resourceURL id="editDepartment"/>"> Edit Dep </a></li>
-    </ul>
-</nav>
 
 <%--
 

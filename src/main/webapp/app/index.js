@@ -20,19 +20,18 @@ export default class MainController {
         this.map.set('empSave', () => this.empController.empSave());
         this.map.set('addEmployee', () => this.empController.editEmployee());
 
-        this.map.get('deps')(event);
+        this.map.get('deps')();
     }
 
     init() {
-        alert(window.MYDepartment.depAll);
         $("#content").on('click', '.listener', () => {
             let clickEvent = event.target.value;
 
             if(this.map.has(clickEvent)){
-                this.map.get(clickEvent)(event);
+                this.map.get(clickEvent)();
             }
             else{
-                this.map.get('deps')(event);
+                this.map.get('deps')();
             }
         });
     }

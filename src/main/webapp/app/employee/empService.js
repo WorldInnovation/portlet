@@ -1,11 +1,20 @@
 export default class EmpService {
+    constructor(){}
 
     getAllEmp(depID) {
+        let dataObject = {};
+        dataObject = this.createDataObject(dataObject, window.MYDepartment.ns, 'id', depID);
         let employeesList =
             $.ajax({
-                url: "/employeesList",
-                data: {depID: depID},
-                type: "GET"
+                url: window.MYDepartment.employeesList,
+                data: dataObject,
+                type: "GET",
+                success: function (data, textStatus, jqXHR) {
+                    alert("ok " + data);
+                },
+                error: function (data) {
+                    alert("err " + data);
+                }
             });
         return employeesList;
     };
@@ -47,5 +56,10 @@ export default class EmpService {
         });
         return employeeSave;
     };
+    createDataObject(object, nameSpace, paramName, param) {
+
+        object[nameSpace + paramName] = param;
+        return object;
+    }
 
 }
