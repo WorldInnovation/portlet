@@ -26,7 +26,6 @@ export default class MainController {
     init() {
         $("#content").on('click', '.listener', () => {
             let clickEvent = event.target.value;
-
             if(this.map.has(clickEvent)){
                 this.map.get(clickEvent)();
             }

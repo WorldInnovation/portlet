@@ -30,7 +30,6 @@ export default class DepService {
     editDep(id) {
         let dataObject = {};
         dataObject[window.MYDepartment.ns + 'id'] = id;
-        //dataObject[window.MYDepartment.ns + 'name'] = 'lala';
         let editDep = $.ajax({
             url: window.MYDepartment.editDepartment,
             data: dataObject,//

@@ -47,39 +47,11 @@
         deleteDep:  '<portlet:resourceURL id="deleteDep"/>',
         getDepName:  '<portlet:resourceURL id="getDepName"/>',
         employeesList:  '<portlet:resourceURL id="employeesList"/>',
+        employeeEdit:  '<portlet:resourceURL id="employeeEdit"/>',
+        empSave:  '<portlet:resourceURL id="empSave"/>',
+        empDelete:  '<portlet:resourceURL id="empDelete"/>',
         ns: '<portlet:namespace/>',
         depId: '<portlet:namespace/>'+ 'id'
     };
 </script>
 
-<%--
-
-<nav>
-    <ul>
-        <li><a href="<portlet:renderURL />"> Departments </a></li>
-        <li><a href="${alternativeViewUrl}"> Alternative View </a></li>
-        <li><a href="${actionOneUrl}"> Action One </a></li>
-        <li><a href="${actionTwoUrl}"> Action Two </a></li>
-        <li><a href="${resourceOneUrl}"> Resource One </a></li>
-        <li><a href="${editDepartment}"> Edit Dep </a></li>
-
-    </ul>
-</nav>
-
-<%--
-&ndash;%&gt;
-<script>
-
-    $.ajax({
-        url: '<portlet:resourceURL id="editDepartment"/>',
-        data: {${ns}id: 1,
-            ${ns}name: 'test'
-        },//person id to sent
-        type: 'GET',
-        dataType: "json",
-        success: function (data) {
-            alert(data);
-            // get person data back from controller
-        }
-    });
-</script>--%>

@@ -20,38 +20,41 @@ export default class EmpService {
     };
 
     deleteEmp(id) {
+        let dataObject = {};
+        dataObject = this.createDataObject(dataObject, window.MYDepartment.ns, 'id', id);
         let deleteEmp = $.ajax({
-            url: '/empDelete',
-            data: {empID: id},
+            url: window.MYDepartment.empDelete,
+            data: dataObject,
             type: 'POST'
         });
         return deleteEmp;
     };
 
     editEmp(depID, id){
+        let dataObject = {};
+        dataObject[window.MYDepartment.ns + 'id'] = id;
+        dataObject[window.MYDepartment.ns + 'depID'] = depID;
         let editEmp = $.ajax({
-            url:'/employeeEdit',
-            data: {
-                depID: depID,
-                empID: id
-            },
+            url: window.MYDepartment.employeeEdit,
+            data: dataObject,
             type:'GET'
         });
         return editEmp;
     };
 
     employeeSave(depID, id) {
+        let dataObject = {};
+        dataObject[window.MYDepartment.ns + 'id'] = id;
+        dataObject[window.MYDepartment.ns + 'depID'] = depID;
+        dataObject[window.MYDepartment.ns + 'firstName'] = $('#firstName').val();
+        dataObject[window.MYDepartment.ns + 'secondName'] = $('#secondName').val();
+        dataObject[window.MYDepartment.ns + 'grade'] = $('#grade').val();
+        dataObject[window.MYDepartment.ns + 'birthday'] = $('#birthday').val();
+        dataObject[window.MYDepartment.ns + 'eMail'] = $('#eMail').val();
+
         let employeeSave = $.ajax({
-            url:'/empSave',
-            data: {
-             depID: depID,
-             id:id,
-             firstName:$('#firstName').val(),
-             secondName:$('#secondName').val(),
-             grade:$('#grade').val(),
-             birthday:$('#birthday').val(),
-             eMail:$('#eMail').val()
-             },
+            url: window.MYDepartment.empSave,
+            data: dataObject,
             type: 'POST'
         });
         return employeeSave;
