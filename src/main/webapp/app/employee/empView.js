@@ -31,7 +31,7 @@ export default class EmpView {
                     .append($('<td>').text(response[i].firstName))
                     .append($('<td>').text(response[i].secondName))
                     .append($('<td>').text(response[i].grade))
-                    .append($('<td>').text(response[i].birthday))
+                    .append($('<td>').text(new Date(response[i].birthday)))
                     .append($('<td>').text(response[i].eMail))
 
                     .append($('<td>').append($('<button class="listener" value="employeeEdit" name="' + response[i].id + '" >Edit</button>')))

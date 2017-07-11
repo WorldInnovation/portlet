@@ -17,20 +17,20 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
-import javax.xml.crypto.Data;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 @Controller
 @RequestMapping("VIEW")
-public class EmployeesController extends ViewController{
+public class EmployeesController extends ViewController {
 
     @ResourceMapping("employeesList")
     public void employeesList(ResourceRequest req, ResourceResponse resp) throws SystemException, IOException {
         String strDepID = req.getParameter("id");
         Long depID = FormatUtils.getLongFromStr(strDepID);
-         DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Employee.class, PortalClassLoaderUtil.getClassLoader());
+        DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Employee.class, PortalClassLoaderUtil.getClassLoader());
         dynamicQuery.add(PropertyFactoryUtil.forName("depID").eq(depID));
         List<Employee> employees = EmployeeLocalServiceUtil.dynamicQuery(dynamicQuery);
         writeJSON(resp, JSON.toJSONString(employees));
@@ -45,14 +45,22 @@ public class EmployeesController extends ViewController{
         Long empID = FormatUtils.getLongFromStr(strEmpID);
 
         Employee employee = new EmployeeImpl();
-        if(empID != null){
+        if (empID != null) {
             employee = EmployeeLocalServiceUtil.getEmployee(empID);
         }
         writeJSON(resp, JSON.toJSONString(employee));
     }
 
+    @ResourceMapping("empDelete")
+    public void empDelete (ResourceRequest req, ResourceResponse resp) throws SystemException, PortalException, IOException {
+        String strEmpID = req.getParameter("id");
+        Long empID = FormatUtils.getLongFromStr(strEmpID);
+        Employee employee = EmployeeLocalServiceUtil.deleteEmployee(empID);
+        writeJSON(resp, JSON.toJSONString(employee));
+    }
+
     @ResourceMapping("empSave")
-    public void empSave (ResourceRequest req, ResourceResponse resp) throws SystemException, PortalException {
+    public void empSave(ResourceRequest req, ResourceResponse resp) throws SystemException, PortalException {
         String strDepID = req.getParameter("depID");
         Long depID = FormatUtils.getLongFromStr(strDepID);
 
@@ -62,7 +70,7 @@ public class EmployeesController extends ViewController{
         String strGrade = req.getParameter("grade");
         Integer grade = FormatUtils.getIntFromStr(strGrade);
         String strBirthday = req.getParameter("birthday");
-        Date birthday  = FormatUtils.getDateFromString(strBirthday);
+        Date birthday = FormatUtils.getDateFromString(strBirthday);
 
         if ((empID != null)) {
             employee = EmployeeLocalServiceUtil.getEmployee(empID);
@@ -73,8 +81,7 @@ public class EmployeesController extends ViewController{
             employee.setBirthday(birthday);
             EmployeeLocalServiceUtil.updateEmployee(employee);
 
-        }
-        else {
+        } else {
             employee.setDepID(depID);
             employee.setFirstName(req.getParameter("firstName"));
             employee.setSecondName(req.getParameter("secondName"));
@@ -82,7 +89,10 @@ public class EmployeesController extends ViewController{
             employee.setGrade(grade);
             employee.setBirthday(birthday);
             EmployeeLocalServiceUtil.addEmployee(employee);
+
+            employee.getBirthday();
         }
+
 
     }
 
